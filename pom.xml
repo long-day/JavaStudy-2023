@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>leet-code-study</module>
+        <module>design-pattern</module>
     </modules>
 
     <properties>
