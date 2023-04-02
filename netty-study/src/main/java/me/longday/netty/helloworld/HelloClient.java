@@ -1,6 +1,7 @@
 package me.longday.netty.helloworld;
 
 import io.netty.bootstrap.Bootstrap;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
@@ -17,7 +18,7 @@ import java.net.InetSocketAddress;
 public class HelloClient {
     public static void main(String[] args) throws InterruptedException {
 
-        new Bootstrap()
+        Channel socketChannel = new Bootstrap()
                 .group(new NioEventLoopGroup())
                 .channel(NioSocketChannel.class)
                 .handler(new ChannelInitializer<NioSocketChannel>() {
@@ -27,10 +28,12 @@ public class HelloClient {
 
                     }
                 })
-                .connect(new InetSocketAddress("localhost",10022))
+                .connect(new InetSocketAddress("localhost", 10022))
                 .sync()
-                .channel()
-                .writeAndFlush("hello service i am client");
+                .channel();
+        System.out.println(socketChannel);
 
+        socketChannel.writeAndFlush("hello service i am client");
+        socketChannel.close();
     }
 }
