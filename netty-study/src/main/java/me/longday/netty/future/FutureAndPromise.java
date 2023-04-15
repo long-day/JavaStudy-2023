@@ -6,7 +6,6 @@ import io.netty.util.concurrent.DefaultPromise;
 import io.netty.util.concurrent.Future;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.LinkedList;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -27,7 +26,7 @@ public class FutureAndPromise {
         // jdkFuture(cusThreadPool);
 
         // nettyFuture();
-        LinkedList
+        // LinkedList
         // nettyPromise();
         NioEventLoopGroup loopGroup = new NioEventLoopGroup(2);
         EventLoop next = loopGroup.next();
