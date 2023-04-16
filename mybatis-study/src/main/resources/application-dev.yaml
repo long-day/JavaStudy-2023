@@ -1,0 +1,69 @@
+spring:
+  datasource:
+    druid:
+      db-type: "com.alibaba.druid.pool.DruidDataSource"
+      username: root
+      password: 123456
+      url: jdbc:mysql://localhost:3306/db1?useSSL=false&useUnicode=true&characterEncoding=UTF8&serverTimezone=GMT&allowPublicKeyRetrieval=true
+      # 连接池配置
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      # 连接等待超时时间
+      max-wait: 30000
+      # 配置检测可以关闭的空闲连接间隔时间
+      time-between-eviction-runs-millis: 60000
+      # 配置连接在池中的最小生存时间
+      min-evictable-idle-time-millis: 300000
+#      # 打开PSCache，并且指定每个连接上PSCache的大小
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      max-pool-prepared-statement-per-connection-size: 20
+#      # 配置监控统计拦截的filters, 去掉后监控界面sql无法统计, wall用于防火墙
+      filter:
+        #配置StatFilter (SQL监控配置)
+        stat:
+          enabled: true #开启 SQL 监控
+          db-type: mysql
+          slow-sql-millis: 1000 #慢查询
+          log-slow-sql: true #记录慢查询 SQL
+        #配置WallFilter (防火墙配置)
+        wall:
+          enabled: true #开启防火墙
+          db-type: mysql
+          config:
+            update-allow: true #允许更新操作
+            drop-table-allow: false #禁止删表操作
+            insert-allow: true #允许插入操作
+            delete-allow: true #删除数据操作
+            select-allow: true
+      #      # Spring监控AOP切入点，如x.y.z.service.*,配置多个英文逗号分隔
+      aop-patterns: me.longDay.*
+
+mybatis:
+  #匹配sql语句的映射文件的位置，classpath代表在resources下
+  mapper-locations: classpath*:mapper/*.xml
+  #以下两个配置可以省略，然后在mapper映射文件中配置也是可以的。
+  #使用type-aliases-package中指定entity扫描包类让mybatis自定扫描到自定义的entity
+  type-aliases-package: me.longDay.domain
+  configuration:
+    # 开启驼峰uName自动映射到u_name
+    map-underscore-to-camel-case: true
+    # 开启二级缓存，默认为 true
+    cache-enabled: true
+    # 全局缓存策略,默认为SESSION
+    local-cache-scope: session
+    # 当没有值传递给 JDBC 时要使用的默认 JDBC 类型，默认为 Other.Oracle数据库对Other报错,需要配置为null
+    jdbc-type-for-null: null
+    # 全局语句超时时间，以秒为单位，默认为未设置(不超时)
+    default-statement-timeout: 30
+    # 全局结果集(ResultSet)的大小限制，如果在查询中没有指定 fetchSize，则此属性用作默认值 单位: 行数
+    default-fetch-size: 30
+    # 是否使用自动生成的主键(例如 MySQL 中的 AUTO_INCREMENT)，默认为 false 这样可以获取插入数据后的主键值
+    use-generated-keys: true
+    # 默认执行器类型，可选值为 SIMPLE、REUSE 和 BATCH，默认为 SIMPLE
+    # SIMPLE: 每次请求都需要重新创建 Statement 对象，因此它的性能较差
+    # REUSE: 可以重复利用 Statement 对象来执行多个请求。
+    # 注意 ==> 如果SQL语句有输入参数，则在缓存中的 Statement 对象可能会被其他请求共享，因此需要确保输入参数的正确性
+    # BATCH: 批量执行多条 SQL 语句,注意事项同上
+    default-executor-type: simple

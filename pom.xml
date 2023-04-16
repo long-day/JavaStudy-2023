@@ -11,6 +11,7 @@
     <modules>
         <module>leet-code-study</module>
         <module>design-pattern</module>
+        <module>mybatis-study</module>
     </modules>
 
     <properties>
@@ -26,25 +27,26 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.9.2</version>
         </dependency>
-        <!--日志-->
-        <!--门面-->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>2.0.6</version>
-        </dependency>
-        <!--log4j-->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.19.0</version>
-        </dependency>
-        <!--log4j slf4j整合-->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j2-impl</artifactId>
-            <version>2.19.0</version>
-        </dependency>
+        <!--&lt;!&ndash;日志&ndash;&gt;-->
+        <!--&lt;!&ndash;门面&ndash;&gt;-->
+        <!--<dependency>-->
+        <!--    <groupId>org.slf4j</groupId>-->
+        <!--    <artifactId>slf4j-api</artifactId>-->
+        <!--    <version>2.0.6</version>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash;log4j&ndash;&gt;-->
+        <!--<dependency>-->
+        <!--    <groupId>org.apache.logging.log4j</groupId>-->
+        <!--    <artifactId>log4j-core</artifactId>-->
+        <!--    <version>2.19.0</version>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash;log4j slf4j整合&ndash;&gt;-->
+        <!--<dependency>-->
+        <!--    <groupId>org.apache.logging.log4j</groupId>-->
+        <!--    <artifactId>log4j-slf4j2-impl</artifactId>-->
+        <!--    <version>2.19.0</version>-->
+        <!--</dependency>-->
+
         <!--lombok-->
         <dependency>
             <groupId>org.projectlombok</groupId>
